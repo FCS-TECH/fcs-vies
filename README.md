@@ -16,12 +16,12 @@ public async Task<IHttpActionResult> GetViesData([FromUri] ViesQuery query)
 
     // execute request
     var viesReqest = new ViesHttpRequest();
-    var viesResponseView = await viesReqest.GetResponseAsync(viesLookupUrl, query.CountryCode, query.catNumber);
+    var viesResponseView = await viesReqest.GetResponseAsync(viesLookupUrl, query.CountryCode, query.vatNumber);
 
     // intermediate parser
     var viesParser = new ViesResponseParser();
     var viesEntity = viesParser.ParseViesResponse(viesResponseView.Message);
-    
+
     // return result
     return Ok(viesEntity);
 }
