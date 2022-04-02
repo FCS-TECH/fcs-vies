@@ -34,7 +34,7 @@ namespace FCS.Lib.Vies
 {
     public class ViesHttpRequest
     {
-    //"http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
+        //"http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
         public async Task<ViesResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber)
         {
             var xml = new StringBuilder();
@@ -53,6 +53,7 @@ namespace FCS.Lib.Vies
             using var client = new HttpClient();
             using var viesRequest = new HttpRequestMessage(HttpMethod.Post, endpoint);
             viesRequest.Headers.Add("SOAPAction", "");
+            viesRequest.Headers.Add("User-Agent", "Innotec Danmark AS - info.innotec.dk");
             viesRequest.Content = content;
             var response = await client.SendAsync(viesRequest).ConfigureAwait(true);
             var xmlResult = await response.Content.ReadAsStringAsync().ConfigureAwait(true);

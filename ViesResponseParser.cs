@@ -23,28 +23,28 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 using System.Linq;
 using System.Xml.Linq;
 
 namespace FCS.Lib.Vies;
 
-public class ViesResultParser
+public class ViesResponseParser
 {
-    public ViesEntityModel ParesViesResult(string xmlData)
+    public ViesEntityModel ParseViesResponse(string xmlData)
     {
-        var xmlDoc = XDocument.Parse(xmlData);
-        var result = (from x in xmlDoc.Root?.Elements("checkVatResponse")
-            select new ViesEntityModel
-            {
-                CountryCode = (string)x.Element("countryCode"),
-                VatNumber = (string)x.Element("vatNumber"),
-                RequestDate = (string)x.Element("requestDate"),
-                Valid = (bool)x.Element("valid"),
-                Name = (string)x.Element("name"),
-                Address = (string)x.Element("address")
-            }).FirstOrDefault();
+        var xml = XDocument.Parse(xmlData);
 
-        return result;
+        var x = xml.Descendants().Where(c => c.Name.LocalName == "checkVatResponse")
+            .Select(x => new ViesEntityModel()
+            {
+                CountryCode = (string)x.Element(x.Name.Namespace + "countryCode"),
+                VatNumber = (string)x.Element(x.Name.Namespace + "vatNumber"),
+                RequestDate = (string)x.Element(x.Name.Namespace + "requestDate"),
+                Valid = (bool)x.Element(x.Name.Namespace + "valid"),
+                Name = (string)x.Element(x.Name.Namespace + "name"),
+                Address = (string)x.Element(x.Name.Namespace + "address")
+            }).FirstOrDefault();
+        return x;
     }
-    
 }

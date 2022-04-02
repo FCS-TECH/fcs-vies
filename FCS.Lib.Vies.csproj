@@ -50,7 +50,7 @@
     <Compile Include="ViesQuery.cs" />
     <Compile Include="ViesQueryValidator.cs" />
     <Compile Include="ViesResponseView.cs" />
-    <Compile Include="ViesResultParser.cs" />
+    <Compile Include="ViesResponseParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />
