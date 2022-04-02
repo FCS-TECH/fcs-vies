@@ -30,6 +30,6 @@ public static class ViesQueryValidator
 {
     public static bool ValidateViesQuery(ViesQuery query)
     {
-        return string.IsNullOrWhiteSpace(query.VatNumber) && string.IsNullOrWhiteSpace(query.CountryCode);
+        return !string.IsNullOrWhiteSpace(query.VatNumber) && !string.IsNullOrWhiteSpace(query.CountryCode);
     }
 }
