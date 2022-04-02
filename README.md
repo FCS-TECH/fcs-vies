@@ -11,12 +11,12 @@ public async Task<IHttpActionResult> GetViesData([FromUri] ViesQuery query)
     if (!ViesQueryValidator.ValidateViesQuery(query))
         return BadRequest($"invalid request");
 
-    // vies endpoint
-    var viesLookupUrl = $"{Settings.ViesLookupUrl}";
-
+    var endpoint = $"{Settings.ViesLookupUrl}"
+    var userAgent = $"{Settings.UserAgent}"
+    
     // execute request
     var viesReqest = new ViesHttpRequest();
-    var viesResponseView = await viesReqest.GetResponseAsync(viesLookupUrl, query.CountryCode, query.vatNumber);
+    var viesResponseView = await viesReqest.GetResponseAsync(endpoint, query.CountryCode, query.vatNumber, userAgent);
 
     // intermediate parser
     var viesParser = new ViesResponseParser();
