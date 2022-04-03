@@ -24,8 +24,6 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.Collections.Generic;
-using System.Net;
 using FCS.Lib.Common;
 
 namespace FCS.Lib.Vies
