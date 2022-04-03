@@ -51,6 +51,7 @@
     <Compile Include="ViesQueryValidator.cs" />
     <Compile Include="ViesResponseView.cs" />
     <Compile Include="ViesResponseParser.cs" />
+    <Compile Include="ViesVatInfoMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />
@@ -58,6 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fcs-common\FCS.Lib.Common.csproj">
+      <Project>{3E5FA1AB-44D2-4CBC-B6D7-80B74CA9B265}</Project>
+      <Name>FCS.Lib.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

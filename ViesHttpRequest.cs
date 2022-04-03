@@ -23,9 +23,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +31,7 @@ namespace FCS.Lib.Vies
 {
     public class ViesHttpRequest
     {
-        //"http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
+        // "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
         public async Task<ViesResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber, string userAgent)
         {
             var xml = new StringBuilder();
