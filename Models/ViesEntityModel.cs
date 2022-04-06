@@ -23,7 +23,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace FCS.Lib.Vies;
+namespace FCS.Lib.Vies.Models;
 
 public class ViesEntityModel
 {

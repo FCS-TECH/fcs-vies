@@ -26,14 +26,15 @@
 
 using System.Linq;
 using System.Xml.Linq;
+using FCS.Lib.Vies.Models;
 
 namespace FCS.Lib.Vies;
 
 public class ViesResponseParser
 {
-    public ViesEntityModel ParseViesResponse(string xmlData)
+    public ViesEntityModel ParseViesResponse(string responseData)
     {
-        var xml = XDocument.Parse(xmlData);
+        var xml = XDocument.Parse(responseData);
 
         var x = xml.Descendants().Where(c => c.Name.LocalName == "checkVatResponse")
             .Select(x => new ViesEntityModel()
