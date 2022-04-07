@@ -24,6 +24,8 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
+using System.Globalization;
 using FCS.Lib.Common;
 using FCS.Lib.Vies.Models;
 
@@ -70,12 +72,12 @@ namespace FCS.Lib.Vies
                 VatNumber = viesEntity.VatNumber,
                 City = city,
                 ZipCode = zip,
-                RequestDate = viesEntity.RequestDate
+                RequestDate = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };
             c.States.Add(new VatState
             {
                 State = viesEntity.Valid ? "NORMAL" : "LUKKET",
-                LastUpdate = viesEntity.RequestDate,
+                LastUpdate = $"{viesEntity.RequestDate:yyyy-MM-dd}",
                 TimeFrame = new TimeFrame
                 {
                     EndDate = "NA",
@@ -84,7 +86,7 @@ namespace FCS.Lib.Vies
             });
             c.LifeCycles.Add(new LifeCycle
             {
-                LastUpdate = viesEntity.RequestDate,
+                LastUpdate = $"{viesEntity.RequestDate:yyyy-MM-dd}",
                 TimeFrame = new TimeFrame
                 {
                     StartDate = "NN",

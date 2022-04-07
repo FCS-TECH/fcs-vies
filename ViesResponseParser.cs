@@ -24,6 +24,7 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Linq;
 using System.Xml.Linq;
 using FCS.Lib.Vies.Models;
@@ -41,7 +42,7 @@ public class ViesResponseParser
             {
                 CountryCode = (string)x.Element(x.Name.Namespace + "countryCode"),
                 VatNumber = (string)x.Element(x.Name.Namespace + "vatNumber"),
-                RequestDate = (string)x.Element(x.Name.Namespace + "requestDate"),
+                RequestDate = DateTime.Now,
                 Valid = (bool)x.Element(x.Name.Namespace + "valid"),
                 Name = (string)x.Element(x.Name.Namespace + "name"),
                 Address = (string)x.Element(x.Name.Namespace + "address")

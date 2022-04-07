@@ -23,13 +23,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
+using System;
+
 namespace FCS.Lib.Vies.Models;
 
 public class ViesEntityModel
 {
     public string CountryCode { get; set; }
     public string VatNumber { get; set; }
-    public string RequestDate { get; set; }
+    public DateTime RequestDate { get; set; }
     public bool Valid { get; set; }
     public string Name { get; set; }
     public string Address { get; set; }
