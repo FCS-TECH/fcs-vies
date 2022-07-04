@@ -26,7 +26,7 @@
 
 using System;
 
-namespace FCS.Lib.Vies.Models;
+namespace FCS.Lib.Vies;
 
 public class ViesEntityModel
 {

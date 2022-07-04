@@ -27,7 +27,6 @@
 using System;
 using System.Globalization;
 using FCS.Lib.Common;
-using FCS.Lib.Vies.Models;
 
 namespace FCS.Lib.Vies
 {

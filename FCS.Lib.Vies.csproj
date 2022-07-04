@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ViesEntityModel.cs" />
+    <Compile Include="ViesEntityModel.cs" />
     <Compile Include="ViesHttpRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViesQuery.cs" />
