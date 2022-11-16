@@ -30,8 +30,17 @@ using System.Xml.Linq;
 
 namespace FCS.Lib.Vies;
 
+/// <summary>
+/// Vies http response parser
+/// </summary>
 public class ViesResponseParser
 {
+    /// <summary>
+    /// Parser
+    /// </summary>
+    /// <param name="responseData"></param>
+    /// <returns>Vies Entity Model parsed from XML data</returns>
+    /// <see cref="ViesEntityModel"/>
     public ViesEntityModel ParseViesResponse(string responseData)
     {
         var xml = XDocument.Parse(responseData);

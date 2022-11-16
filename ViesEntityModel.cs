@@ -28,12 +28,33 @@ using System;
 
 namespace FCS.Lib.Vies;
 
+/// <summary>
+/// Vies Entity Model
+/// </summary>
 public class ViesEntityModel
 {
+    /// <summary>
+    /// Business entity's country code of origin
+    /// </summary>
     public string CountryCode { get; set; }
+    /// <summary>
+    /// Business entity vat number
+    /// </summary>
     public string VatNumber { get; set; }
+    /// <summary>
+    /// Request date
+    /// </summary>
     public DateTime RequestDate { get; set; }
+    /// <summary>
+    /// Valid flag
+    /// </summary>
     public bool Valid { get; set; }
+    /// <summary>
+    /// Business entity name
+    /// </summary>
     public string Name { get; set; }
+    /// <summary>
+    /// Business entity address
+    /// </summary>
     public string Address { get; set; }
 }

@@ -26,8 +26,17 @@
 
 namespace FCS.Lib.Vies;
 
+/// <summary>
+/// Vies Query Validator
+/// </summary>
 public static class ViesQueryValidator
 {
+    /// <summary>
+    /// Validate Vies query
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns>bool indicating valid query</returns>
+    /// <see cref="ViesQuery"/>
     public static bool ValidateViesQuery(ViesQuery query)
     {
         return !string.IsNullOrWhiteSpace(query.VatNumber) && !string.IsNullOrWhiteSpace(query.CountryCode);

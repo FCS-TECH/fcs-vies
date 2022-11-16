@@ -25,8 +25,17 @@
 // ***********************************************************************
 namespace FCS.Lib.Vies;
 
+/// <summary>
+/// Vies Query model
+/// </summary>
 public class ViesQuery
 {
+    /// <summary>
+    /// Country code for country to query
+    /// </summary>
     public string CountryCode { get; set; }
+    /// <summary>
+    /// Vat number to query
+    /// </summary>
     public string VatNumber { get; set; }
 }

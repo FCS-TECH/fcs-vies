@@ -29,11 +29,24 @@ using System.Threading.Tasks;
 
 namespace FCS.Lib.Vies
 {
+    /// <summary>
+    /// http request to vies registrar
+    /// </summary>
     public class ViesHttpRequest
     {
-        // "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
+        /// <summary>
+        /// Async http request to vies registrar
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="countryCode"></param>
+        /// <param name="vatNumber"></param>
+        /// <param name="userAgent"></param>
+        /// <returns>Vies Response View model</returns>
+        /// <see cref="ViesResponseView"/>
+        /// <remarks>Service http://ec.europa.eu/taxation_customs/vies/services/checkVatService</remarks>
         public async Task<ViesResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber, string userAgent)
         {
+
             var xml = new StringBuilder();
             xml.Append($"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\">");
             xml.Append($"<soapenv:Header/>");

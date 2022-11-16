@@ -30,8 +30,20 @@ using FCS.Lib.Common;
 
 namespace FCS.Lib.Vies
 {
+    /// <summary>
+    /// Vies vat info mapper
+    /// </summary>
     public class ViesVatInfoMapper
     {
+        /// <summary>
+        /// map vies response to Crm
+        /// </summary>
+        /// <param name="viesEntity"></param>
+        /// <returns>Vat Info Data Transfer Object</returns>
+        /// <see cref="VatInfoDto"/>
+        /// <see cref="ViesEntityModel"/>
+        /// <see cref="VatState"/>
+        /// <see cref="TimeFrame"/>
         public VatInfoDto MapViesToCrm(ViesEntityModel viesEntity)
         {
             var addressBlock = viesEntity.Address.Split('\n');

@@ -27,9 +27,21 @@ using System.Net;
 
 namespace FCS.Lib.Vies;
 
+/// <summary>
+/// Vies Response view
+/// </summary>
 public class ViesResponseView
 {
+    /// <summary>
+    /// http request status code
+    /// </summary>
     public HttpStatusCode Code { get; set; }
+    /// <summary>
+    /// boolean indicating success
+    /// </summary>
     public bool IsSuccessStatusCode { get; set; }
+    /// <summary>
+    /// response message
+    /// </summary>
     public string Message { get; set; } = "";
 }
