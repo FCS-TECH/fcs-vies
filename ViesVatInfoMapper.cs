@@ -25,7 +25,9 @@
 // ***********************************************************************
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq.Expressions;
 using FCS.Lib.Common;
 
 namespace FCS.Lib.Vies
@@ -44,14 +46,14 @@ namespace FCS.Lib.Vies
         /// <see cref="ViesEntityModel"/>
         /// <see cref="VatState"/>
         /// <see cref="TimeFrame"/>
-        public VatInfoDto MapViesToCrm(ViesEntityModel viesEntity)
+        public VatInfoDto MapViesVatInfoDto(ViesEntityModel viesEntity)
         {
             var addressBlock = viesEntity.Address.Split('\n');
-            string coName;
-            string address;
-            string zip;
-            string city;
-            var i = 1;
+            var coName = "";
+            var address = "";
+            var zip = "";
+            var city = "";
+            var i = 0;
             if (viesEntity.CountryCode == "SE" && addressBlock.Length > 0)
             {
                 if (addressBlock.Length > 1)
@@ -59,32 +61,59 @@ namespace FCS.Lib.Vies
                     coName = addressBlock[i];
                     i++;
                 }
-                address = addressBlock[i];
-                i++;
-                zip = addressBlock[i].Substring(0, 6).Replace(" ", "");
-                city = addressBlock[i].Substring(7).Trim();
+
+                try
+                {
+                    address = addressBlock[i].Normalize();
+                }
+                catch
+                {
+                    address = "fejl";
+                }
+                
+                if (addressBlock.Length > 2)
+                {
+                    i++;
+                    zip = addressBlock[i].Normalize().Substring(0, 6).Replace(" ", "");
+                    city = addressBlock[i].Normalize().Substring(7).Trim();
+                }
             }
             else
             {
                 if (addressBlock.Length > 1)
                 {
-                    coName = addressBlock[i];
+                    coName = addressBlock[i].Normalize();
                     i++;
                 }
-                address = addressBlock[i];
-                i++;
-                zip = addressBlock[i].Substring(0, 5).Replace(" ", "");
-                city = addressBlock[i].Substring(5).Trim();
+
+                try
+                {
+                    address = addressBlock[i].Normalize();
+                }
+                catch
+                {
+                    address = "fejl";
+                }
+
+                if (addressBlock.Length > 1)
+                {
+                    i++;
+                    zip = addressBlock[i].Substring(0, 5).Replace(" ", "");
+                    city = addressBlock[i].Substring(5).Trim();
+                }
             }
+
+            // generate return object
             var c = new VatInfoDto
             {
-                Name = viesEntity.Name,
+                Name = viesEntity.Name.Normalize(),
                 Address = address,
                 VatNumber = viesEntity.VatNumber,
                 City = city,
                 ZipCode = zip,
                 RequestDate = DateTime.Now.ToString(CultureInfo.InvariantCulture)
             };
+
             c.States.Add(new VatState
             {
                 State = viesEntity.Valid ? "NORMAL" : "LUKKET",

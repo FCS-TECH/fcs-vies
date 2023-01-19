@@ -36,11 +36,11 @@ public class ViesEntityModel
     /// <summary>
     /// Business entity's country code of origin
     /// </summary>
-    public string CountryCode { get; set; }
+    public string CountryCode { get; set; } = "";
     /// <summary>
     /// Business entity vat number
     /// </summary>
-    public string VatNumber { get; set; }
+    public string VatNumber { get; set; } = "";
     /// <summary>
     /// Request date
     /// </summary>
@@ -52,9 +52,9 @@ public class ViesEntityModel
     /// <summary>
     /// Business entity name
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
     /// <summary>
     /// Business entity address
     /// </summary>
-    public string Address { get; set; }
+    public string Address { get; set; } = "";
 }

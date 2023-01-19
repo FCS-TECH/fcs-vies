@@ -52,8 +52,8 @@ public class ViesResponseParser
                 VatNumber = (string)x.Element(x.Name.Namespace + "vatNumber"),
                 RequestDate = DateTime.Now,
                 Valid = (bool)x.Element(x.Name.Namespace + "valid"),
-                Name = (string)x.Element(x.Name.Namespace + "name"),
-                Address = (string)x.Element(x.Name.Namespace + "address")
+                Name = (string)x.Element(x.Name.Namespace + "name") ?? "",
+                Address = (string)x.Element(x.Name.Namespace + "address") ?? ""
             }).FirstOrDefault();
         return x;
     }

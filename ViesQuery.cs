@@ -33,9 +33,10 @@ public class ViesQuery
     /// <summary>
     /// Country code for country to query
     /// </summary>
-    public string CountryCode { get; set; }
+    public string CountryCode { get; set; } = "";
+
     /// <summary>
     /// Vat number to query
     /// </summary>
-    public string VatNumber { get; set; }
+    public string VatNumber { get; set; } = "";
 }
