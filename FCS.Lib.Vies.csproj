@@ -54,7 +54,6 @@
     <Compile Include="ViesHttpRequest.cs" />
     <Compile Include="ViesQuery.cs" />
     <Compile Include="ViesQueryValidator.cs" />
-    <Compile Include="ViesResponseView.cs" />
     <Compile Include="ViesResponseParser.cs" />
     <Compile Include="ViesVatInfoMapper.cs" />
   </ItemGroup>
