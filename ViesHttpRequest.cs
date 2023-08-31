@@ -27,6 +27,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using FCS.Lib.Common;
 
 namespace FCS.Lib.Vies;
 
@@ -43,9 +44,9 @@ public class ViesHttpRequest
     /// <param name="vatNumber"></param>
     /// <param name="userAgent"></param>
     /// <returns>Vies Response View model</returns>
-    /// <see cref="ViesResponseView"/>
+    /// <see cref="HttpResponseView"/>
     /// <remarks>Service http://ec.europa.eu/taxation_customs/vies/services/checkVatService</remarks>
-    public async Task<ViesResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber,
+    public async Task<HttpResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber,
         string userAgent)
     {
         var xml = new StringBuilder();
@@ -70,7 +71,7 @@ public class ViesHttpRequest
         var response = await client.SendAsync(viesRequest).ConfigureAwait(true);
         var xmlResult = await response.Content.ReadAsStringAsync().ConfigureAwait(true);
 
-        return new ViesResponseView
+        return new HttpResponseView
         {
             Code = response.StatusCode,
             IsSuccessStatusCode = response.IsSuccessStatusCode,
