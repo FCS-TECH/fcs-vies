@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : FCS.Lib.Vies
-// Author          : fhdk
-// Created          : 2023 01 19 10:41
+// Author           : 
+// Created          : 2023 10 01 11:03
 // 
-// Last Modified By: fhdk
-// Last Modified On : 2023 03 14 09:16
+// Last Modified By : root
+// Last Modified On : 2023 10 02 15:23
 // ***********************************************************************
 // <copyright file="ViesResponseParser.cs" company="FCS">
 //     Copyright (C) 2023-2023 FCS Frede's Computer Services.
@@ -31,16 +31,16 @@ using System.Xml.Linq;
 namespace FCS.Lib.Vies;
 
 /// <summary>
-/// Vies http response parser
+///     Vies http response parser
 /// </summary>
 public class ViesResponseParser
 {
     /// <summary>
-    /// Parser
+    ///     Parser
     /// </summary>
     /// <param name="responseData"></param>
     /// <returns>Vies Entity Model parsed from XML data</returns>
-    /// <see cref="ViesEntityModel"/>
+    /// <see cref="ViesEntityModel" />
     public ViesEntityModel ParseViesResponse(string responseData)
     {
         var xml = XDocument.Parse(responseData);

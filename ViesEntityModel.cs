@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : FCS.Lib.Vies
-// Author          : fhdk
-// Created          : 2023 01 19 10:41
+// Author           : 
+// Created          : 2023 10 01 11:03
 // 
-// Last Modified By: fhdk
-// Last Modified On : 2023 03 14 09:16
+// Last Modified By : root
+// Last Modified On : 2023 10 02 15:23
 // ***********************************************************************
 // <copyright file="ViesEntityModel.cs" company="FCS">
 //     Copyright (C) 2023-2023 FCS Frede's Computer Services.
@@ -29,37 +29,37 @@ using System;
 namespace FCS.Lib.Vies;
 
 /// <summary>
-/// Vies Entity Model
+///     Vies Entity Model
 /// </summary>
 public class ViesEntityModel
 {
     /// <summary>
-    /// Business entity's country code of origin
+    ///     Business entity's country code of origin
     /// </summary>
     public string CountryCode { get; set; } = "";
 
     /// <summary>
-    /// Business entity vat number
+    ///     Business entity vat number
     /// </summary>
     public string VatNumber { get; set; } = "";
 
     /// <summary>
-    /// Request date
+    ///     Request date
     /// </summary>
     public DateTime RequestDate { get; set; }
 
     /// <summary>
-    /// Valid flag
+    ///     Valid flag
     /// </summary>
     public bool Valid { get; set; }
 
     /// <summary>
-    /// Business entity name
+    ///     Business entity name
     /// </summary>
     public string Name { get; set; } = "";
 
     /// <summary>
-    /// Business entity address
+    ///     Business entity address
     /// </summary>
     public string Address { get; set; } = "";
 }

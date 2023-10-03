@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : FCS.Lib.Vies
-// Author          : fhdk
-// Created          : 2023 02 02 11:05
+// Author           : 
+// Created          : 2023 10 01 11:03
 // 
-// Last Modified By: fhdk
-// Last Modified On : 2023 03 14 09:16
+// Last Modified By : root
+// Last Modified On : 2023 10 02 15:23
 // ***********************************************************************
 // <copyright file="ViesVatInfoMapper.cs" company="FCS">
 //     Copyright (C) 2023-2023 FCS Frede's Computer Services.
@@ -31,19 +31,19 @@ using FCS.Lib.Common;
 namespace FCS.Lib.Vies;
 
 /// <summary>
-/// Vies vat info mapper
+///     Vies vat info mapper
 /// </summary>
 public class ViesVatInfoMapper
 {
     /// <summary>
-    /// map vies response to Crm
+    ///     map vies response to Crm
     /// </summary>
     /// <param name="viesEntity"></param>
     /// <returns>Vat Info Data Transfer Object</returns>
-    /// <see cref="VatInfoDto"/>
-    /// <see cref="ViesEntityModel"/>
-    /// <see cref="VatState"/>
-    /// <see cref="TimeFrame"/>
+    /// <see cref="VatInfoDto" />
+    /// <see cref="ViesEntityModel" />
+    /// <see cref="VatState" />
+    /// <see cref="TimeFrame" />
     public VatInfoDto MapViesVatInfoDto(ViesEntityModel viesEntity)
     {
         var addressBlock = viesEntity.Address.Split('\n');

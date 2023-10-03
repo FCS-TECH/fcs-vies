@@ -1,13 +1,13 @@
 ﻿// ***********************************************************************
 // Assembly         : FCS.Lib.Vies
-// Author          : fhdk
-// Created          : 2022 12 17 13:33
+// Author           : 
+// Created          : 2023 10 01 11:03
 // 
-// Last Modified By: fhdk
-// Last Modified On : 2023 03 14 09:16
+// Last Modified By : root
+// Last Modified On : 2023 10 02 15:23
 // ***********************************************************************
 // <copyright file="ViesHttpRequest.cs" company="FCS">
-//     Copyright (C) 2022-2023 FCS Frede's Computer Services.
+//     Copyright (C) 2023-2023 FCS Frede's Computer Services.
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU Affero General Public License as
 //     published by the Free Software Foundation, either version 3 of the
@@ -32,19 +32,19 @@ using FCS.Lib.Common;
 namespace FCS.Lib.Vies;
 
 /// <summary>
-/// http request to vies registrar
+///     http request to vies registrar
 /// </summary>
 public class ViesHttpRequest
 {
     /// <summary>
-    /// Async http request to vies registrar
+    ///     Async http request to vies registrar
     /// </summary>
     /// <param name="endpoint"></param>
     /// <param name="countryCode"></param>
     /// <param name="vatNumber"></param>
     /// <param name="userAgent"></param>
     /// <returns>Vies Response View model</returns>
-    /// <see cref="HttpResponseView"/>
+    /// <see cref="HttpResponseView" />
     /// <remarks>Service http://ec.europa.eu/taxation_customs/vies/services/checkVatService</remarks>
     public async Task<HttpResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber,
         string userAgent)

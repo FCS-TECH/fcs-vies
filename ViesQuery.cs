@@ -1,10 +1,10 @@
 ﻿// ***********************************************************************
 // Assembly         : FCS.Lib.Vies
-// Author          : fhdk
-// Created          : 2023 01 19 10:41
+// Author           : 
+// Created          : 2023 10 01 11:03
 // 
-// Last Modified By: fhdk
-// Last Modified On : 2023 03 14 09:16
+// Last Modified By : root
+// Last Modified On : 2023 10 02 15:23
 // ***********************************************************************
 // <copyright file="ViesQuery.cs" company="FCS">
 //     Copyright (C) 2023-2023 FCS Frede's Computer Services.
@@ -27,17 +27,17 @@
 namespace FCS.Lib.Vies;
 
 /// <summary>
-/// Vies Query model
+///     Vies Query model
 /// </summary>
 public class ViesQuery
 {
     /// <summary>
-    /// Country code for country to query
+    ///     Country code for country to query
     /// </summary>
     public string CountryCode { get; set; } = "";
 
     /// <summary>
-    /// Vat number to query
+    ///     Vat number to query
     /// </summary>
     public string VatNumber { get; set; } = "";
 }
