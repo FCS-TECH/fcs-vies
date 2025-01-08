@@ -1,66 +1,62 @@
 ﻿// ***********************************************************************
-// Assembly         : FCS.Lib.Vies
-// Filename         : ViesVatInfoMapper.cs
-// Author           : Frede Hundewadt
-// Created          : 2024 03 29 12:36
+//  Solution         : Inno.Api.v2
+//  Assembly         : FCS.Lib.Vies
+//  Filename         : ViesVatInfoMapper.cs
+//  Created          : 2025-01-03 14:01
+//  Last Modified By : dev
+//  Last Modified On : 2025-01-08 13:01
+//  ***********************************************************************
+//  <copyright company="Frede Hundewadt">
+//      Copyright (C) 2010-2025 Frede Hundewadt
+//      This program is free software: you can redistribute it and/or modify
+//      it under the terms of the GNU Affero General Public License as
+//      published by the Free Software Foundation, either version 3 of the
+//      License, or (at your option) any later version.
 // 
-// Last Modified By : root
-// Last Modified On : 2024 04 11 13:02
-// ***********************************************************************
-// <copyright company="FCS">
-//     Copyright (C) 2024-2024 FCS Frede's Computer Service.
-//     This program is free software: you can redistribute it and/or modify
-//     it under the terms of the GNU Affero General Public License as
-//     published by the Free Software Foundation, either version 3 of the
-//     License, or (at your option) any later version.
+//      This program is distributed in the hope that it will be useful,
+//      but WITHOUT ANY WARRANTY; without even the implied warranty of
+//      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//      GNU Affero General Public License for more details.
 // 
-//     This program is distributed in the hope that it will be useful,
-//     but WITHOUT ANY WARRANTY; without even the implied warranty of
-//     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//     GNU Affero General Public License for more details.
-// 
-//     You should have received a copy of the GNU Affero General Public License
-//     along with this program.  If not, see [https://www.gnu.org/licenses]
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
+//      You should have received a copy of the GNU Affero General Public License
+//      along with this program.  If not, see [https://www.gnu.org/licenses]
+//  </copyright>
+//  <summary></summary>
+//  ***********************************************************************
 
 using System;
 using System.Globalization;
 using FCS.Lib.Common;
 
-
 namespace FCS.Lib.Vies;
 
 /// <summary>
-///     Vies vat info mapper
+///     Provides functionality to map VAT information from a <see cref="ViesEntityModel" /> to a <see cref="VatInfoDto" />.
 /// </summary>
+/// <remarks>
+///     This class is responsible for transforming VAT-related data from the VIES system into a structured format
+///     suitable for further processing or consumption by other components.
+/// </remarks>
 public class ViesVatInfoMapper
 {
     /// <summary>
-    ///     map vies response to Crm
+    ///     Maps a <see cref="ViesEntityModel" /> to a <see cref="VatInfoDto" /> object.
     /// </summary>
-    /// <param name="viesEntity"></param>
-    /// <returns>Vat Info Data Transfer Object</returns>
-    /// <see cref="VatInfoDto" />
-    /// <see cref="ViesEntityModel" />
-    /// <see cref="VatState" />
-    /// <see cref="TimeFrame" />
+    /// <param name="viesEntity">The source entity containing VAT information to be mapped.</param>
+    /// <returns>
+    ///     A <see cref="VatInfoDto" /> object populated with the mapped data from the provided
+    ///     <see cref="ViesEntityModel" />.
+    /// </returns>
     public VatInfoDto MapViesVatInfoDto(ViesEntityModel viesEntity)
     {
         var addressBlock = viesEntity.Address.Split('\n');
-        var coName = "";
-        var address = "";
+        string address;
         var zip = "";
         var city = "";
         var i = 0;
         if (viesEntity.CountryCode == "SE" && addressBlock.Length > 0)
         {
-            if (addressBlock.Length > 1)
-            {
-                coName = addressBlock[i];
-                i++;
-            }
+            if (addressBlock.Length > 1) i++;
 
             try
             {
@@ -82,7 +78,7 @@ public class ViesVatInfoMapper
         {
             if (addressBlock.Length > 1)
             {
-                coName = addressBlock[i].Normalize();
+                addressBlock[i].Normalize();
                 i++;
             }
 

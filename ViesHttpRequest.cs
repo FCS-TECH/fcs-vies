@@ -1,56 +1,74 @@
-﻿// ***********************************************************************
-// Assembly         : FCS.Lib.Vies
-// Filename         : ViesHttpRequest.cs
-// Author           : Frede Hundewadt
-// Created          : 2024 03 29 12:36
-// 
-// Last Modified By : root
-// Last Modified On : 2024 04 11 13:02
-// ***********************************************************************
-// <copyright company="FCS">
-//     Copyright (C) 2024-2024 FCS Frede's Computer Service.
-//     This program is free software: you can redistribute it and/or modify
-//     it under the terms of the GNU Affero General Public License as
-//     published by the Free Software Foundation, either version 3 of the
-//     License, or (at your option) any later version.
-// 
-//     This program is distributed in the hope that it will be useful,
-//     but WITHOUT ANY WARRANTY; without even the implied warranty of
-//     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//     GNU Affero General Public License for more details.
-// 
-//     You should have received a copy of the GNU Affero General Public License
-//     along with this program.  If not, see [https://www.gnu.org/licenses]
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
+﻿// // ***********************************************************************
+// // Solution         : Inno.Api.v2
+// // Assembly         : FCS.Lib.Vies
+// // Filename         : ViesHttpRequest.cs
+// // Created          : 2025-01-03 14:01
+// // Last Modified By : dev
+// // Last Modified On : 2025-01-04 12:01
+// // ***********************************************************************
+// // <copyright company="Frede Hundewadt">
+// //     Copyright (C) 2010-2025 Frede Hundewadt
+// //     This program is free software: you can redistribute it and/or modify
+// //     it under the terms of the GNU Affero General Public License as
+// //     published by the Free Software Foundation, either version 3 of the
+// //     License, or (at your option) any later version.
+// //
+// //     This program is distributed in the hope that it will be useful,
+// //     but WITHOUT ANY WARRANTY; without even the implied warranty of
+// //     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// //     GNU Affero General Public License for more details.
+// //
+// //     You should have received a copy of the GNU Affero General Public License
+// //     along with this program.  If not, see [https://www.gnu.org/licenses]
+// // </copyright>
+// // <summary></summary>
+// // ***********************************************************************
 
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using FCS.Lib.Common;
 
-
 namespace FCS.Lib.Vies;
 
 /// <summary>
-///     http request to vies registrar
+///     Represents an HTTP request handler for interacting with the VIES (VAT Information Exchange System) service.
+///     This class provides functionality to send requests and retrieve responses for validating VAT numbers
+///     across European Union member states.
 /// </summary>
 public class ViesHttpRequest
 {
     /// <summary>
-    ///     Async http request to vies registrar
+    ///     Sends an asynchronous HTTP request to the VIES (VAT Information Exchange System) service to validate a VAT number.
     /// </summary>
-    /// <param name="endpoint"></param>
-    /// <param name="countryCode"></param>
-    /// <param name="vatNumber"></param>
-    /// <param name="userAgent"></param>
-    /// <returns>Vies Response View model</returns>
-    /// <see cref="HttpResponseView" />
-    /// <remarks>Service http://ec.europa.eu/taxation_customs/vies/services/checkVatService</remarks>
+    /// <param name="endpoint">
+    ///     The URL of the VIES service endpoint to which the request will be sent.
+    /// </param>
+    /// <param name="countryCode">
+    ///     The country code associated with the VAT number, in ISO 3166-1 alpha-2 format.
+    /// </param>
+    /// <param name="vatNumber">
+    ///     The VAT number to be validated.
+    /// </param>
+    /// <param name="userAgent">
+    ///     The User-Agent string to include in the HTTP request headers.
+    /// </param>
+    /// <returns>
+    ///     A task that represents the asynchronous operation. The task result contains an <see cref="HttpResponseView" />
+    ///     object
+    ///     with details of the HTTP response, including the status code, success status, and response message.
+    /// </returns>
+    /// <remarks>
+    ///     This method constructs a SOAP request to the VIES service and sends it using an HTTP POST request. The response
+    ///     from the service is parsed and returned as an <see cref="HttpResponseView" /> object.
+    /// </remarks>
+    /// <exception cref="HttpRequestException">
+    ///     Thrown if there is an error while sending the HTTP request or receiving the response.
+    /// </exception>
     public async Task<HttpResponseView> GetResponseAsync(string endpoint, string countryCode, string vatNumber,
         string userAgent)
     {
+        // <remarks>Service http://ec.europa.eu/taxation_customs/vies/services/checkVatService</remarks>
         var xml = new StringBuilder();
         xml.Append(
             "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\">");
